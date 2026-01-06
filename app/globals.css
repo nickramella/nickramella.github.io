@@ -24,3 +24,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.anim-fade{
+  animation: fade 1s steps(44) 1s 1 normal both,
+             moveUp 1s steps(44) 1s 1 normal both;
+}
+
+@keyframes fade{
+  from{opacity: 0;}
+  to{opacity: 100%;}
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(10px); /* Start at the original vertical position */
+  }
+  100% {
+    transform: translateY(0); /* Move up by 50 pixels */
+  }
+}
+
+.fluid-text {
+  /*
+    1. Min size: 1rem (16px default)
+    2. Preferred size: 2.5vw (2.5% of the viewport width)
+    3. Max size: 2.8rem (around 45px default)
+  */
+  font-size: clamp(1rem, 1.5vw, 2.5rem);
+}

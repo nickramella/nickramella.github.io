@@ -19,6 +19,20 @@ export const metadata: Metadata = {
   description: "Portfolio Website",
 };
 
+interface SideNavItemProps {
+  href: string;
+  text: string;
+  header: boolean;
+}
+
+const SideNavItem = ({href, text, header}: SideNavItemProps) => {
+  return (
+    <div className="w-full">
+      <Link href={href} className={`${header && "text-2xl font-bold"} hover:text-blue-500 py-1`}>{text}</Link>
+    </div>
+  )
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,21 +44,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="bg-black text-white h-screen w-screen overflow-hidden">
-          <div className="w-full h-20 flex justify-center items-center space-x-50 border-blue-500 border-b-2">
-            <Link href="/" className="text-2xl font-bold hover:text-blue-500">Nicholas Ramella</Link>
-            <div className="space-x-4">
-              <Link href="/work" className="hover:text-blue-500">Experience</Link>
-              <Link href="/demo" className="hover:text-blue-500">Demos</Link>
-              <Link href="/analytics" className="hover:text-blue-500">OSINT & Data</Link>
-              <Link href="/personal" className="hover:text-blue-500">Personal</Link>
-            </div>
-            <div>
+        <div className="bg-black text-white h-screen w-screen flex">
+          <div className="w-60 h-screen float-left border-blue-500 border-r-2 px-10 anim-fade fixed">
+            <SideNavItem href="/" header={true} text="Nicholas Ramella"/>
+            <div className="flex justify-start">
               <a href="https://www.linkedin.com/in/nicholas-ramella-8b605618a" target="_blank"><i className="fa fa-linkedin-square text-2xl hover:text-blue-500"></i></a>
-              <a href="https://github.com/nickramella" target="_blank"><i className="fa fa-github text-2xl hover:text-blue-500"></i></a>
+              <a href="https://github.com/nickramella" target="_blank"><i className="fa fa-github w-8 text-2xl hover:text-blue-500"></i></a>
             </div>
+            <SideNavItem href="/work" header={false} text="Experience"/>
+            <SideNavItem href="/demo" header={false} text="Demos"/>
+            <SideNavItem href="/analytics" header={false} text="OSINT"/>
+            <SideNavItem href="/personal" header={false} text="Personal"/>
           </div>
-          <div className="w-full h-full flex justify-center py-10">
+          <div className="py-10 flex justify-end ml-90 mr-20">
             {children}
           </div>
         </div>
