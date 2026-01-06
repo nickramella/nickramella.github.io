@@ -27,8 +27,8 @@ interface SideNavItemProps {
 
 const SideNavItem = ({href, text, header}: SideNavItemProps) => {
   return (
-    <div className="w-full">
-      <Link href={href} className={`${header && "text-2xl font-bold"} hover:text-blue-500 py-1`}>{text}</Link>
+    <div className="w-full py-2">
+      <Link href={href} className={`${header && "text-2xl font-bold"} hover:text-blue-500`}>{text}</Link>
     </div>
   )
 }
@@ -45,7 +45,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="bg-black text-white h-screen w-screen flex">
-          <div className="w-60 h-screen float-left border-blue-500 border-r-2 px-10 anim-fade fixed">
+          <div className="w-60 h-screen float-left border-blue-500 border-r-2 px-2 anim-fade fixed">
             <SideNavItem href="/" header={true} text="Nicholas Ramella"/>
             <div className="flex justify-start">
               <a href="https://www.linkedin.com/in/nicholas-ramella-8b605618a" target="_blank"><i className="fa fa-linkedin-square text-2xl hover:text-blue-500"></i></a>
