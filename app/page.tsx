@@ -7,7 +7,7 @@ export default function Home() {
   const isSmallScreen = useSelector(selectIsSmallScreen);
 
   return (
-    <div className={`my-22 ${isSmallScreen ? "mx-10" : "mx-30"}`}>
+    <div className={`my-22 h-screen mx-[10%]`}>
       <div className="w-full font-mono bg-[#1D1D1F] border border-white rounded-2xl anim-fade overflow-auto">
         <div className="w-full h-10 bg-[#353738] flex justify-center items-center">
           <i className="fa fa-folder text-blue-300" />
@@ -24,7 +24,7 @@ export default function Home() {
           </div>
           </div>
           <div className={`justify-end ${!isSmallScreen && "w-[50%]"}`}>
-            <h1 className="text-center font-bold py-3">Full Stack Development | TypeScript | Node.js | Data Analysis</h1>
+            <h1 className="text-center font-bold py-3">Full Stack Development | Data Analysis | OSINT</h1>
             <p className="fluid-text pb-5">
               <i className="fa fa-angle-right"/>Software engineer with a background in statistics and data analysis, specializing in full-stack development and cloud-based enterprise platforms. Experience modernizing legacy applications and business intelligence dashboards into scalable, secure, and ADA- and WCAG-compliant solutions. Experience spans front-end frameworks, and backend services while working in an Agile environment.
             </p>

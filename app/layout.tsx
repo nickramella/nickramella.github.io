@@ -49,9 +49,9 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <AppRouterCacheProvider>
-            <div className="bg-black text-white h-screen w-screen flex">
+            <div className="bg-black text-white flex">
               <MenuBar />
-              {children}
+              <div className="scroll-auto">{children}</div>
             </div>
           </AppRouterCacheProvider>
         </body>
