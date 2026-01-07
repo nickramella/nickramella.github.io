@@ -1,18 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { AppStore, RootState } from './store/store';
+
 
 const initialState = { 
-  screenSize: "large"
+  isSmallScreen: false,
 };
 
 export const rootSlice = createSlice({
-  name: 'windowSize',
+  name: 'root',
   initialState,
   reducers: {
     setWindowSize: (state, action) => {
-      state.screenSize = action.payload.width > 780 ? "large" : "small";
+      state.isSmallScreen = action.payload < 800;
     },
   }
 });
 
+export const selectIsSmallScreen = (state: RootState) => state.root.isSmallScreen;
 export const { setWindowSize } = rootSlice.actions;
 export default rootSlice.reducer;
