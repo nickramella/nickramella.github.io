@@ -123,6 +123,10 @@ const MenuBar = () => {
               </Button>
             ))}
           </Box>
+          <Box sx={{ flexGrow: 0 }}>
+                          <a href="https://www.linkedin.com/in/nicholas-ramella-8b605618a" target="_blank"><i className={`fa fa-linkedin-square text-2xl`}></i></a>
+              <a href="https://github.com/nickramella" target="_blank"><i className={`fa fa-github text-2xl`}></i></a>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

@@ -51,9 +51,7 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <div className="bg-black text-white h-screen w-screen flex">
               <MenuBar />
-              <div className="my-20 mx-30">
-                {children}
-              </div>
+              {children}
             </div>
           </AppRouterCacheProvider>
         </body>
