@@ -11,7 +11,7 @@ export const rootSlice = createSlice({
   initialState,
   reducers: {
     setWindowSize: (state, action) => {
-      state.isSmallScreen = action.payload < 850;
+      state.isSmallScreen = action.payload < 800;
     },
   }
 });

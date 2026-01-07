@@ -1,8 +1,11 @@
 import React from 'react'
+import CustomizedTimeline from "../../components/Timeline";
 
 const page = () => {
   return (
-    <div>Work Experience</div>
+    <div className="anim-fade flex justify-center items-center">
+      <CustomizedTimeline />
+    </div>
   )
 }
 

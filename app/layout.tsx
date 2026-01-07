@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Script from "next/script";
-import Navigation from "@/components/Navigation";
 import ReduxProvider from "../lib/store/provider";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import MenuBar from "@/components/MenuBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,12 +48,14 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <div className="bg-black text-white h-screen w-screen flex">
-            <Navigation />
-            <div className="py-10 flex justify-end ml-[30vw] mr-20">
-              {children}
+          <AppRouterCacheProvider>
+            <div className="bg-black text-white h-screen w-screen flex">
+              <MenuBar />
+              <div className="my-20 mx-30">
+                {children}
+              </div>
             </div>
-          </div>
+          </AppRouterCacheProvider>
         </body>
       </html>
     </ReduxProvider>
