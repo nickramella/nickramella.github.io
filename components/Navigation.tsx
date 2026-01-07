@@ -4,7 +4,7 @@ import SideNavItem from './SideNavItem'
 import { useDispatch, useStore } from 'react-redux';
 import { setWindowSize } from '@/lib/rootSlice';
 
-const SideNav = () => {
+const Navigation = () => {
     const store = useStore();
     const dispatch = useDispatch();
     function handleResize() {
@@ -15,9 +15,9 @@ const SideNav = () => {
         dispatch(setWindowSize(window.innerWidth));
         window.addEventListener('resize', handleResize);
     }, []);
-    
+
   return (
-    <div className="w-[20vw] h-screen float-left border-blue-500 border-r-2 px-2 anim-fade fixed">
+    <div className="w-[20vw] h-screen float-left border-blue-500 border-r-5 px-2 anim-fade fixed">
         <SideNavItem href="/" header={true} text="Nicholas Ramella"/>
         <div className="flex justify-start">
             <a href="https://www.linkedin.com/in/nicholas-ramella-8b605618a" target="_blank"><i className="fa fa-linkedin-square text-2xl hover:text-blue-500"></i></a>
@@ -31,4 +31,4 @@ const SideNav = () => {
   )
 }
 
-export default SideNav
+export default Navigation

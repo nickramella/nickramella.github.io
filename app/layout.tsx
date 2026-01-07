@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Script from "next/script";
-import SideNav from "@/components/SideNav";
+import Navigation from "@/components/Navigation";
 import ReduxProvider from "../lib/store/provider";
 
 const geistSans = Geist({
@@ -48,7 +48,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <div className="bg-black text-white h-screen w-screen flex">
-            <SideNav />
+            <Navigation />
             <div className="py-10 flex justify-end ml-[30vw] mr-20">
               {children}
             </div>
