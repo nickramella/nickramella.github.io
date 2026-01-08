@@ -15,7 +15,7 @@ const page = () => {
         </div>
         <DemoModal
           title="Payroll Comparison"
-          description={`Here is a heavily simplified version of a payroll comparison widget I made while working on an HR Portal. Click the button ${isSmallScreen? "above" : "to the left"} and start the demo. 
+          description={`Here is a heavily simplified version of a payroll comparison widget I've worked on for an HR Portal. Click the button ${isSmallScreen? "above" : "to the left"} and start the demo. 
             You can select a date and create a randomly generated pay stub for that date and then compare that stub to either itself or another pay stub. There is no limit to the amount of pay stubs you can create for a specific date.`}
         >
           <PayComparison />
