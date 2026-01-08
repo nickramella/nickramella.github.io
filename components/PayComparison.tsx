@@ -16,15 +16,17 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { PieChart } from '@mui/x-charts/PieChart';
+import PayBreakdown from './PayBreakdown';
+import CustomPieChart from './CustomPieChart';
 
-interface PayInfo {
+export interface PayInfo {
     gross: number;
     takeHome: number;
     taxes: number;
     deductions: number;
 }
 
-interface PayStub {
+export interface PayStub {
     uid: string;
     date: PickerValue;
     payInfo: PayInfo;
@@ -38,7 +40,7 @@ const PayComparison = () => {
     const [payStubOne, setPayStubOne] = useState<PayStub>();
     const [payStubTwo, setPayStubTwo] = useState<PayStub>();
     const [tab, setTab] = useState<string>("1");
-    const [selectedDate, setSelectedDate] = useState<PickerValue | null>(dayjs(Date.now()));
+    const [selectedDate, setSelectedDate] = useState<PickerValue>(dayjs(Date.now()));
     const createPayStub = () => {
         const gross = Math.random() * (10000 - 1000) + 1000;
         const deductions = Math.random() * (300 - 50) + 50;
@@ -56,9 +58,15 @@ const PayComparison = () => {
             date: selectedDate,
             payInfo: payInfo
         }
-        setPayStubs(payStubs => [payStub, ...payStubs]);
+        const newPayStubs = [payStub, ...payStubs].sort((a: any, b: any) => {
+            const dateA = a.date.toDate();
+            const dateB = b.date.toDate();
+
+            return dateB - dateA;
+        })
+        setPayStubs(newPayStubs);
         setShowSuccess(true);
-        setTimeout(() => setShowSuccess(false), 3000)
+        setTimeout(() => setShowSuccess(false), 2000)
     }
 
   return (
@@ -71,6 +79,7 @@ const PayComparison = () => {
         <button
             className="bg-indigo-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white p-3 mt-2 hover:cursor-pointer"
             disabled={showSuccess}
+            aria-label="Create Pay Stub"
             onClick={createPayStub}>Generate Pay Stub
         </button>
         <Alert className={`transition-opacity duration-2000 ease-in-out opacity-0 ${showSuccess && "opacity-100" }`} variant="filled" severity="success">
@@ -95,7 +104,7 @@ const PayComparison = () => {
                         >
                             {payStubs.map((payStub) => {
                                 return (
-                                    <MenuItem value={payStub.uid}>{payStub.date?.format('MM/DD/YYYY')}</MenuItem>
+                                    <MenuItem value={payStub.uid}>{`${payStub.date?.format('MM/DD/YYYY')} $${payStub.payInfo.gross}`}</MenuItem>
                                 )
                             })}
                         </Select>
@@ -117,7 +126,7 @@ const PayComparison = () => {
                         >
                             {payStubs.map((payStub) => {
                                 return (
-                                    <MenuItem value={payStub.uid}>{payStub.date?.format('MM/DD/YYYY')}</MenuItem>
+                                    <MenuItem value={payStub.uid}>{`${payStub.date?.format('MM/DD/YYYY')} $${payStub.payInfo.gross}`}</MenuItem>
                                 )
                             })}
                         </Select>
@@ -134,41 +143,32 @@ const PayComparison = () => {
                             </TabList>
                             </Box>
                             <TabPanel value="1">
-                                <PieChart
-                                    series={[
-                                        {
-                                            innerRadius: 50, outerRadius: 100,
-                                            data: [
-                                                { id: 0, value: payStubOne.payInfo.takeHome, label: 'Take Home' },
-                                                { id: 1, value: payStubOne.payInfo.taxes, label: 'Taxes' },
-                                                { id: 2, value: payStubOne.payInfo.deductions, label: 'Deductions' },
-                                            ],
-                                        },
-                                    ]}
-                                    width={200}
-                                    height={200}
-                                />
+                                <CustomPieChart payStub={payStubOne} />
+                                <PayBreakdown primary={payStubOne} />
                             </TabPanel>
                             <TabPanel value="2">
-                                <PieChart
-                                    series={[
-                                        {
-                                            innerRadius: 50, outerRadius: 100,
-                                            data: [
-                                                { id: 0, value: payStubTwo.payInfo.takeHome, label: 'Take Home' },
-                                                { id: 1, value: payStubTwo.payInfo.taxes, label: 'Taxes' },
-                                                { id: 2, value: payStubTwo.payInfo.deductions, label: 'Deductions' },
-                                            ],
-                                        },
-                                    ]}
-                                    width={200}
-                                    height={200}
-                                />
+                                <CustomPieChart payStub={payStubTwo} />
+                                <PayBreakdown primary={payStubTwo} />
                             </TabPanel>
-                            <TabPanel value="3">Item Three</TabPanel>
+                            <TabPanel value="3">
+                                <PayBreakdown primary={payStubOne} secondary={payStubTwo} />
+                            </TabPanel>
                         </TabContext>
                     </Box>
                 }
+                <div className="bg-[#b3b3b3] rounded-lg font-bold py-2 px-6">Pay Stubs</div>
+                <div className="flex justify-between p-3 font-bold">
+                    <p>Date</p>
+                    <p>Gross</p>
+                </div>
+                {payStubs && payStubs.map((payStub) => {
+                    return (
+                        <div key={payStub.uid} className="flex justify-between p-3">
+                            <p>{payStub.date?.format('MM/DD/YYYY')}</p>
+                            <p>${payStub.payInfo.gross}</p>
+                        </div>
+                    )
+                })}
             </div>
         }
     </div>

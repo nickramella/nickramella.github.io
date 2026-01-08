@@ -3,6 +3,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
+import { useSelector } from 'react-redux';
+import { selectIsSmallScreen } from '@/lib/rootSlice';
 
 interface ModalProps {
     title: string;
@@ -25,6 +27,7 @@ const style = {
 };
 
 const DemoModal: React.FC<React.PropsWithChildren<ModalProps>> = ({title, children}: ModalProps) => {
+  const isSmallScreen = useSelector(selectIsSmallScreen);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -33,6 +36,7 @@ const DemoModal: React.FC<React.PropsWithChildren<ModalProps>> = ({title, childr
     <div>
       <button
         onClick={handleOpen}
+        aria-label="Open Pay Demo"
         className="bg-[#353738] px-3 rounded-2xl border border-white font-bold text-left h-40 w-40 hover:cursor-pointer">
         {title}
       </button>
@@ -42,10 +46,10 @@ const DemoModal: React.FC<React.PropsWithChildren<ModalProps>> = ({title, childr
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={isSmallScreen ? {...style, width: "100vw"} : style}>
           <div className="px-6 py-3 flex justify-between items-center bg-blue-400">
             <h1 className="font-bold text-xl">{title}</h1>
-            <button onClick={handleClose} className="hover:cursor-pointer"><CloseIcon /></button>
+            <button aria-label="Close Modal" onClick={handleClose} className="hover:cursor-pointer"><CloseIcon /></button>
           </div>
           {children}
         </Box>

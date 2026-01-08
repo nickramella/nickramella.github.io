@@ -1,9 +1,14 @@
-import BlogPost from '@/components/BlogPost'
+"use client";
+import BlogPost from '@/components/BlogPost';
+import { selectIsSmallScreen } from '@/lib/rootSlice';
+import { useSelector } from 'react-redux';
 
 const page = () => {
+  const isSmallScreen = useSelector(selectIsSmallScreen);
+  
   return (
     <div className="h-screen">
-      <div className="my-25 mx-30 anim-fade">
+      <div className={`my-25 ${isSmallScreen ? "mx-10" : "mx-30"} anim-fade`}>
         <BlogPost
           title="Cold War Enemies CTF Challenge Solution"
           date="01/07/2025">
