@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { AppStore, RootState } from './store/store';
+import { createSlice } from "@reduxjs/toolkit";
+import { AppStore, RootState } from "./store/store";
 
 
 const initialState = { 
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const rootSlice = createSlice({
-  name: 'root',
+  name: "root",
   initialState,
   reducers: {
     setWindowSize: (state, action) => {

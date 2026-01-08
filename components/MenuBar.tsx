@@ -1,18 +1,18 @@
 "use client";
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsSmallScreen, setWindowSize } from '@/lib/rootSlice';
-import { useEffect } from 'react';
-import Link from 'next/link';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsSmallScreen, setWindowSize } from "@/lib/rootSlice";
+import { useEffect } from "react";
+import Link from "next/link";
 
 const links: Record<string, string> = {"Experience": "/work", "Demos": "/demo", "Blog": "/analytics", "Personal": "/personal"};
 
@@ -26,7 +26,7 @@ const MenuBar = () => {
 
   useEffect(() => {
     dispatch(setWindowSize(window.innerWidth));
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
   }, []);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -38,7 +38,7 @@ const MenuBar = () => {
   };
 
   return (
-    <AppBar className='anim-fade'>
+    <AppBar className="anim-fade">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {!isSmallScreen &&
@@ -65,17 +65,17 @@ const MenuBar = () => {
                     id="menu-appbar"
                     anchorEl={anchorElNav}
                     anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
+                        vertical: "bottom",
+                        horizontal: "left",
                     }}
                     keepMounted
                     transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
+                        vertical: "top",
+                        horizontal: "left",
                     }}
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
-                    sx={{ display: { xs: 'block', md: 'none' } }}
+                    sx={{ display: { xs: "block", md: "none" } }}
                     >
                     {Object.keys(links).map((page) => (
                         <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -97,7 +97,7 @@ const MenuBar = () => {
                 <Button
                     key={page}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    sx={{ my: 2, color: "white", display: "block" }}
                 >
                     <Link href={links[page]}>{page}</Link>
                 </Button>

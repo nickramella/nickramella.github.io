@@ -1,7 +1,7 @@
 "use client"
-import WorkExperience from '@/components/WorkExperience';
-import { selectIsSmallScreen } from '@/lib/rootSlice';
-import { useSelector } from 'react-redux';
+import WorkExperience from "@/components/WorkExperience";
+import { selectIsSmallScreen } from "@/lib/rootSlice";
+import { useSelector } from "react-redux";
 
 const page = () => {
   const isSmallScreen = useSelector(selectIsSmallScreen);

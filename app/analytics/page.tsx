@@ -1,7 +1,7 @@
 "use client";
-import BlogPost from '@/components/BlogPost';
-import { selectIsSmallScreen } from '@/lib/rootSlice';
-import { useSelector } from 'react-redux';
+import BlogPost from "@/components/BlogPost";
+import { selectIsSmallScreen } from "@/lib/rootSlice";
+import { useSelector } from "react-redux";
 
 const page = () => {
   const isSmallScreen = useSelector(selectIsSmallScreen);

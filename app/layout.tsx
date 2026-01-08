@@ -4,7 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import Script from "next/script";
 import ReduxProvider from "../lib/store/provider";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import MenuBar from "@/components/MenuBar";
 
 const geistSans = Geist({

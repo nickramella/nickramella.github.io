@@ -1,23 +1,23 @@
 "use client"
-import React, { useState } from 'react'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { PickerValue } from '@mui/x-date-pickers/internals';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import dayjs from 'dayjs';
-import Alert from '@mui/material/Alert';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import { PieChart } from '@mui/x-charts/PieChart';
-import PayBreakdown from './PayBreakdown';
-import CustomPieChart from './CustomPieChart';
+import React, { useState } from "react"
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { PickerValue } from "@mui/x-date-pickers/internals";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import dayjs from "dayjs";
+import Alert from "@mui/material/Alert";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import { PieChart } from "@mui/x-charts/PieChart";
+import PayBreakdown from "./PayBreakdown";
+import CustomPieChart from "./CustomPieChart";
 
 export interface PayInfo {
     gross: number;
@@ -83,11 +83,11 @@ const PayComparison = () => {
             onClick={createPayStub}>Generate Pay Stub
         </button>
         <Alert className={`transition-opacity duration-2000 ease-in-out opacity-0 ${showSuccess && "opacity-100" }`} variant="filled" severity="success">
-            Pay Stub Created Successfully for {selectedDate?.format('MM/DD/YYYY')}
+            Pay Stub Created Successfully for {selectedDate?.format("MM/DD/YYYY")}
         </Alert>
         {payStubs.length > 0 &&
             <div>
-                <h1 className='font-bold text-lg'>Select two pay stubs to compare.</h1>
+                <h1 className="font-bold text-lg">Select two pay stubs to compare.</h1>
                 <Box sx={{ minWidth: 120, padding: 2 }}>
                     <FormControl fullWidth>
                         <InputLabel id="first-paystub-select-label">Pay Stub 1</InputLabel>
@@ -104,7 +104,7 @@ const PayComparison = () => {
                         >
                             {payStubs.map((payStub) => {
                                 return (
-                                    <MenuItem value={payStub.uid}>{`${payStub.date?.format('MM/DD/YYYY')} $${payStub.payInfo.gross}`}</MenuItem>
+                                    <MenuItem value={payStub.uid}>{`${payStub.date?.format("MM/DD/YYYY")} $${payStub.payInfo.gross}`}</MenuItem>
                                 )
                             })}
                         </Select>
@@ -126,16 +126,16 @@ const PayComparison = () => {
                         >
                             {payStubs.map((payStub) => {
                                 return (
-                                    <MenuItem value={payStub.uid}>{`${payStub.date?.format('MM/DD/YYYY')} $${payStub.payInfo.gross}`}</MenuItem>
+                                    <MenuItem value={payStub.uid}>{`${payStub.date?.format("MM/DD/YYYY")} $${payStub.payInfo.gross}`}</MenuItem>
                                 )
                             })}
                         </Select>
                     </FormControl>
                 </Box>
                 { payStubOne && payStubTwo &&
-                    <Box sx={{ width: '100%', typography: 'body1', overflow: "scroll" }}>
+                    <Box sx={{ width: "100%", typography: "body1", overflow: "scroll" }}>
                         <TabContext value={tab}>
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                             <TabList onChange={(event: React.SyntheticEvent, newValue: string) => setTab(newValue)} aria-label="lab API tabs example">
                                 <Tab label="Pay Stub 1" value="1" />
                                 <Tab label="Pay Stub 2" value="2" />
@@ -164,7 +164,7 @@ const PayComparison = () => {
                 {payStubs && payStubs.map((payStub) => {
                     return (
                         <div key={payStub.uid} className="flex justify-between p-3">
-                            <p>{payStub.date?.format('MM/DD/YYYY')}</p>
+                            <p>{payStub.date?.format("MM/DD/YYYY")}</p>
                             <p>${payStub.payInfo.gross}</p>
                         </div>
                     )

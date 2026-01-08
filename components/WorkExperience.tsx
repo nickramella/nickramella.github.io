@@ -1,4 +1,4 @@
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
+import LaptopMacIcon from "@mui/icons-material/LaptopMac";
 
 interface WorkExperienceProps {
     title: string;

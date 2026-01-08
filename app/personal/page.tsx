@@ -1,7 +1,7 @@
 "use client";
-import Image from 'next/image'
-import { useSelector } from 'react-redux';
-import { selectIsSmallScreen } from '@/lib/rootSlice';
+import Image from "next/image"
+import { useSelector } from "react-redux";
+import { selectIsSmallScreen } from "@/lib/rootSlice";
 
 const page = () => {
   const isSmallScreen = useSelector(selectIsSmallScreen);
