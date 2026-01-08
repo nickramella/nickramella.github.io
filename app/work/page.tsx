@@ -1,9 +1,13 @@
-import React from 'react'
+"use client"
 import WorkExperience from '@/components/WorkExperience';
+import { selectIsSmallScreen } from '@/lib/rootSlice';
+import { useSelector } from 'react-redux';
 
 const page = () => {
+  const isSmallScreen = useSelector(selectIsSmallScreen);
+
   return (
-    <div className="my-25 mx-30 anim-fade flex justify-center items-center overflow-visible">
+    <div className={`my-25 ${isSmallScreen ? "mx-10" : "mx-30"} anim-fade flex justify-center items-center overflow-visible`}>
       <div className="space-y-12">
         <h1 className="text-4xl font-bold relative -left-5">Work Experience</h1>
         <WorkExperience

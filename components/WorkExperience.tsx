@@ -1,4 +1,3 @@
-import React from 'react'
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 
 interface WorkExperienceProps {

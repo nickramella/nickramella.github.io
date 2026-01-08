@@ -8,8 +8,8 @@ const page = () => {
 
   return (
     <div className="h-screen">
-      <div className={`my-25 mx-[10%] anim-fade ${!isSmallScreen && "flex space-x-10"}`}>
-          <div className="relative h-100 w-100 overflow-hidden rounded-full">
+      <div className={`my-30 mx-[10%] anim-fade ${!isSmallScreen && "flex space-x-10"}`}>
+          <div className={`relative ${isSmallScreen ? "h-90 w-90" : "h-100 w-100"} overflow-hidden rounded-full`}>
             <Image
               src="/WebsitePersonal.gif"
               alt="Circular image"
@@ -18,7 +18,7 @@ const page = () => {
               className="rounded-full"
             />
           </div>
-          <div className={`${isSmallScreen ? "pt-5" : "max-w-[40%]"}`}>
+          <div className={`${isSmallScreen ? "pt-5" : "pt-3 max-w-[35%]"}`}>
             <h1 className="text-4xl font-bold pb-5">Life Outside of Work</h1>
             <p>Nature and landscape photography are some of my greatest joys in life. 
               In my free time I like to take my cameras out and go explore somewhere new. 

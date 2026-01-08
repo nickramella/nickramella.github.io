@@ -1,12 +1,12 @@
 import React from 'react'
 
-interface BlogPostInterface {
+interface BlogPostProps {
     title: string;
     date: string;
     children: React.ReactNode;
 }
 
-const BlogPost: React.FC<React.PropsWithChildren<BlogPostInterface>> = ({title, date, children}: BlogPostInterface) => {
+const BlogPost: React.FC<React.PropsWithChildren<BlogPostProps>> = ({title, date, children}: BlogPostProps) => {
   return (
     <div className="pl-6 border-l border-gray-400">
         <h1 className="text-4xl font-extrabold">{title}</h1>
