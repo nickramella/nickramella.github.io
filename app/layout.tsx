@@ -51,7 +51,7 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <div className="bg-black text-white flex">
               <MenuBar />
-              <div className="scroll-auto">{children}</div>
+              <div className="scroll-y-auto">{children}</div>
             </div>
           </AppRouterCacheProvider>
         </body>

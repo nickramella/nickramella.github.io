@@ -7,8 +7,8 @@ export default function Home() {
   const isSmallScreen = useSelector(selectIsSmallScreen);
 
   return (
-    <div className={`my-22 h-screen mx-[10%]`}>
-      <div className="w-full font-mono bg-[#1D1D1F] border border-white rounded-2xl anim-fade overflow-auto">
+    <div className="py-22 h-screen mx-[10%]">
+      <div className="w-full font-mono bg-[#1D1D1F] rounded-2xl anim-fade overflow-auto">
         <div className="w-full h-10 bg-[#353738] flex justify-center items-center">
           <i className="fa fa-folder text-blue-300" />
           <p className="pl-2">nicholasramella</p>
